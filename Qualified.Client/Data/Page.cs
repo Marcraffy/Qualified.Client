@@ -11,7 +11,7 @@ namespace Qualified.Data
 		public string Type { get; set; }
 
 		[JsonProperty("data")]
-		public T Data { get; set; }
+		public T[] Data { get; set; }
 
 		[JsonProperty("currentPage")]
 		public int? CurrentPage { get; set; }
