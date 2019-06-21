@@ -2,6 +2,7 @@
 using Qualified.Data;
 using Qualified.Exceptions;
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -31,12 +32,21 @@ namespace Qualified
 		public async Task<Page<Assessment>> GetAssessmentsAsync() =>
 			Deserialize<Page<Assessment>>(await GetAsync("assessments"));
 
-		public async Task<Page<AssessmentResult>> GetAssessmentResults(string assessmentId) =>
-			Deserialize<Page<AssessmentResult>>(await GetAsync($"/assessments/{assessmentId}/assessment_results"));
+		public async Task<Page<AssessmentResult>> GetAssessmentResults(string assessmentId, string assessmentResultsId)
+		{
+			var result = Deserialize<Page<AssessmentResult>>(await GetAsync($"assessment_results?assessment_id={assessmentId}"));
+			result.Data = result.Data.Where(item => item.Id == assessmentResultsId).ToArray();
+			return result;
+		}
 
 		public async Task<Page<AssessmentSent>> SendAssessmentAsync(SendAssessment input)
 		{
-			var requestBody = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
+			var data = new DataOnly<SendAssessment>
+			{
+				Data = input
+			};
+			var json = JsonConvert.SerializeObject(data);
+			var requestBody = new StringContent(json, Encoding.UTF8, "application/json");
 			return Deserialize<Page<AssessmentSent>>(await PostAsync($"assessment_invitations/invite_candidates", requestBody));
 		}
 
@@ -63,7 +73,7 @@ namespace Qualified
 			}
 			else
 			{
-				throw new QualifiedException("An unexpected error occurred");
+				throw new QualifiedException(Deserialize<Error>(content), "400");
 			}
 		}
 

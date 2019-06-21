@@ -12,7 +12,7 @@ namespace Qualified
 		public double? Average { get; set; }
 
 		[JsonProperty("buckets")]
-		public string Buckets { get; set; }
+		public object Buckets { get; set; }
 
 		[JsonProperty("count")]
 		public int? Count { get; set; }
@@ -24,7 +24,7 @@ namespace Qualified
 		public string Field { get; set; }
 
 		[JsonProperty("histogram")]
-		public string Histogram { get; set; }
+		public object Histogram { get; set; }
 
 		[JsonProperty("interval")]
 		public int? Interval { get; set; }
@@ -33,10 +33,10 @@ namespace Qualified
 		public bool? Inverted { get; set; }
 
 		[JsonProperty("max")]
-		public int? Max { get; set; }
+		public double? Max { get; set; }
 
 		[JsonProperty("min")]
-		public int? Min { get; set; }
+		public double? Min { get; set; }
 
 		[JsonProperty("percentiles")]
 		public Percentiles Percentiles { get; set; }
@@ -48,7 +48,7 @@ namespace Qualified
 		public StandardDeviationBounds StandardDeviationBounds { get; set; }
 
 		[JsonProperty("sum")]
-		public int? Sum { get; set; }
+		public double? Sum { get; set; }
 
 		[JsonProperty("variance")]
 		public double? Variance { get; set; }
