@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Qualified
+namespace Qualified.Data
 {
 	public class Assessment
 	{
@@ -84,7 +84,7 @@ namespace Qualified
 		public Stats AccumulatedSecondsStats { get; set; }
 
 		[JsonProperty("purpose")]
-		public string urpose { get; set; }
+		public string Purpose { get; set; }
 
 		[JsonProperty("demoLandingOrder")]
 		public int? DemoLandingOrder { get; set; }

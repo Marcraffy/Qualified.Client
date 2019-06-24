@@ -18,10 +18,10 @@ namespace Qualified.Data
 		public string TeamCandidateId { get; set; }
 
 		[JsonProperty("TeamId")]
-		public string teamId { get; set; }
+		public string TeamId { get; set; }
 
 		[JsonProperty("State")]
-		public string state { get; set; }
+		public string State { get; set; }
 
 		[JsonProperty("createdAt")]
 		public DateTime? CreatedAt { get; set; }

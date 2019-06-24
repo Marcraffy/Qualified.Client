@@ -41,12 +41,11 @@ namespace Qualified
 
 		public async Task<Page<AssessmentSent>> SendAssessmentAsync(SendAssessment input)
 		{
-			var data = new DataOnly<SendAssessment>
+			var body = JsonConvert.SerializeObject(new DataOnly<SendAssessment>
 			{
 				Data = input
-			};
-			var json = JsonConvert.SerializeObject(data);
-			var requestBody = new StringContent(json, Encoding.UTF8, "application/json");
+			});
+			var requestBody = new StringContent(body, Encoding.UTF8, "application/json");
 			return Deserialize<Page<AssessmentSent>>(await PostAsync($"assessment_invitations/invite_candidates", requestBody));
 		}
 
@@ -73,7 +72,7 @@ namespace Qualified
 			}
 			else
 			{
-				throw new QualifiedException(Deserialize<Error>(content), "400");
+				throw new QualifiedException(Deserialize<Error>(content), response.StatusCode.ToString());
 			}
 		}
 

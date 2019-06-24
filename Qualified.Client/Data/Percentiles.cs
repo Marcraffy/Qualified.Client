@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Qualified
+namespace Qualified.Data
 {
 	public class Percentiles
 	{

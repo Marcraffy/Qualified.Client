@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Qualified
+namespace Qualified.Data
 {
 	public class Stats
 	{
