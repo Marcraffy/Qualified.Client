@@ -8,10 +8,10 @@ namespace Qualified.Data
 		[JsonProperty("id")]
 		public string Id { get; set; }
 
-		[JsonProperty("assessmentIdid")]
+		[JsonProperty("assessmentId")]
 		public string AssessmentId { get; set; }
 
-		[JsonProperty("candidateIdid")]
+		[JsonProperty("candidateId")]
 		public string CandidateId { get; set; }
 
 		[JsonProperty("teamCandidateId")]
@@ -98,8 +98,8 @@ namespace Qualified.Data
 		[JsonProperty("activeTimedSolutionId")]
 		public string ActiveTimedSolutionId { get; set; }
 
-		[JsonProperty("isActivedoubleeractSession")]
-		public bool? IsActivedoubleeractSession { get; set; }
+		[JsonProperty("isActiveInteractSession")]
+		public bool? IsActiveInteractSession { get; set; }
 
 		[JsonProperty("candidateName")]
 		public string CandidateName { get; set; }
@@ -110,11 +110,11 @@ namespace Qualified.Data
 		[JsonProperty("candidatePhone")]
 		public string CandidatePhone { get; set; }
 
-		[JsonProperty("doubleerviewerIds")]
-		public string[] doubleerviewerIds { get; set; }
+		[JsonProperty("interviewerIds")]
+		public string[] InterviewerIds { get; set; }
 
-		[JsonProperty("activedoubleerviewerIds")]
-		public string[] ActivedoubleerviewerIds { get; set; }
+		[JsonProperty("activeInterviewerIds")]
+		public string[] ActiveInterviewerIds { get; set; }
 
 		[JsonProperty("abandoned")]
 		public bool? Abandoned { get; set; }
@@ -122,8 +122,8 @@ namespace Qualified.Data
 		[JsonProperty("workflowName")]
 		public string WorkflowName { get; set; }
 
-		[JsonProperty("isdoubleeractSession")]
-		public bool? IsdoubleeractSession { get; set; }
+		[JsonProperty("isInteractSession")]
+		public bool? IsInteractSession { get; set; }
 
 		[JsonProperty("challengeItems")]
 		public ChallengeItem[] ChallengeItems { get; set; }
