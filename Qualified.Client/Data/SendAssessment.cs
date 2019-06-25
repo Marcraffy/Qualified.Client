@@ -2,7 +2,7 @@
 
 namespace Qualified.Data
 {
-	public class SendAssessment
+	internal class SendAssessment
 	{
 		[JsonProperty("candidates")]
 		public string[] Candidates { get; set; }

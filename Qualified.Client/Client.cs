@@ -32,18 +32,21 @@ namespace Qualified
 		public async Task<Page<Assessment>> GetAssessmentsAsync() =>
 			Deserialize<Page<Assessment>>(await GetAsync("assessments"));
 
-		public async Task<Page<AssessmentResult>> GetAssessmentResults(string assessmentId, string assessmentResultsId)
+		public async Task<AssessmentResult> GetAssessmentResults(string assessmentId, string assessmentResultsId)
 		{
 			var result = Deserialize<Page<AssessmentResult>>(await GetAsync($"assessment_results?assessment_id={assessmentId}"));
-			result.Data = result.Data.Where(item => item.Id == assessmentResultsId).ToArray();
-			return result;
+			return result.Data.SingleOrDefault(item => item.Id == assessmentResultsId);
 		}
 
-		public async Task<Page<AssessmentSent>> SendAssessmentAsync(SendAssessment input)
+		public async Task<Page<AssessmentSent>> SendAssessmentAsync(string assessmentId, string[] candidates)
 		{
 			var body = JsonConvert.SerializeObject(new DataOnly<SendAssessment>
 			{
-				Data = input
+				Data = new SendAssessment
+				{
+					Candidates = candidates,
+					AssessmentId = assessmentId
+				}
 			});
 			var requestBody = new StringContent(body, Encoding.UTF8, "application/json");
 			return Deserialize<Page<AssessmentSent>>(await PostAsync($"assessment_invitations/invite_candidates", requestBody));
