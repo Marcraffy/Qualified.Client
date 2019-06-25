@@ -49,7 +49,13 @@ namespace Qualified
 				}
 			});
 			var requestBody = new StringContent(body, Encoding.UTF8, "application/json");
-			return Deserialize<Page<AssessmentSent>>(await PostAsync($"assessment_invitations/invite_candidates", requestBody));
+			var links = Deserialize<Page<AssessmentSent>>(await PostAsync($"assessment_invitations/invite_candidates", requestBody));
+			links.Data = links.Data.Select(link => {
+				link.InvitePath = $"https://qualified.io{link.InvitePath}";
+				link.InvitePracticePath = $"https://qualified.io{link.InvitePracticePath}";
+				return link;
+			}).ToArray();
+			return links;
 		}
 
 		private async Task<string> GetAsync(string uri) =>
