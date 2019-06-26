@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>Microsoft AppFactory</Company>
+    <Authors>Marc Raftesath</Authors>
+    <PackageId>Qualified Client</PackageId>
+    <Product>Qualified Client</Product>
+    <Description>A dotnet standard library for connecting to Qualified Assessment Service's API</Description>
   </PropertyGroup>
 
   <ItemGroup>
